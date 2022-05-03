@@ -36,43 +36,33 @@ To this end, how can we easily access our API key without opening ourselves up t
 
 There are many ways to store sensitive information but we will go with this method. 
 
-#### Create a `.secret/` directory
+The steps below will help you create a new folder in your IllumiDesk directory where you can store files related to your API credentials, and share those credentials across multiple labs.
 
-This will create a new folder in your project directory where you can store files for any of the API information you have. If you were to push this project to GitHub (ie. share it online) we could put this file in our .gitignore so it would not be shared. To this end, you will be the only one with access to this folder and your API key will be secure!
+#### Create a `secret/` directory
 
+Click on the IllumiDesk logo in the top left corner while holding the `cmd` key (`ctrl` for Windows) to open the window in a new tab. This is the root of your IllumiDesk directory. In this new window, click `New` in the top right corner followed by `Folder`. Find the folder titled `Untitled Folder`, select the checkbox directly to the left of it, scroll back to the top of the page and click `Rename`. Rename the folder to `secret`.
 
-```python
-!mkdir .secret/
-```
+#### Create `.json` file
 
-#### Check to make sure it was created
+Click on the newly created `secret` folder. Now we want to create a `.json` file to securely store our API key. Once again, click `New` in the top right corner of the page followed by `Text File`.
 
-dot files won't show up with just `ls` you must use the show all command as well `ls -a`
+In this file, let's create a dictionary representing the API key that looks something like this:
 
+`{"api_key": "<YOUR_API_KEY>"}`
 
-```python
-!ls -a
-```
+**NOTE**: Double quotes are important! 
 
-#### Secure API Key in .json file
+Replace `<YOUR_API_KEY>` with the API key you were given by yelp.
 
-Next we will create a `.json` file to store our API key. In the cell below, replace `<YOUR_API_KEY>` with the API key you were given by yelp. **Make sure you do not remove any quotations**.
+#### Save as `yelp_api.json`
 
-
-```python
-!echo '{"api_key": "<YOUR_API_KEY>"}' >> yelp_api.json
-```
-
-#### Move `yelp_api.json` to `.secret/`
-
-Finally we can move the `.json` file storing our API key into our secure `.secret/` folder. 
+Once you have stored your API key in the text file, go back to your `secret` folder so we can rename the file. Click on the checkbox next to the text file (`untitled.txt`) then select `Rename` at the top. Name the file `yelp_api.json`.
 
 
-```python
-!mv yelp_api.json .secret/
-```
+#### Import API key to jupyter notebook
+Now that we have the API key stored securely (mostly) in our `secret` folder, let's import it into our jupyter notebook.
 
-The function below opens the `.json` file of the given `path`. We have provided the path to your `yelp_api.json` file below.
+If we remember that our file is just a regular JSON file, open the file and pull out the appropriate information from the `../secret/yelp_api.json file` (The path has been provided for you below)
 
 
 ```python
@@ -85,12 +75,12 @@ def get_keys(path):
 
 
 ```python
-keys = get_keys("./.secret/yelp_api.json")
+keys = get_keys("../secret/yelp_api.json")
 
 api_key = keys['api_key']
 ```
 
-You may check the `api_key` variable to ensure your API key was imported properly. Once you are sure your API key is correct, it is highly recommended you clear the cell's output and delete the `!echo '{"api_key": "<YOUR_API_KEY>"}' >> yelp_api.json` cell above so your API key is not listed anywhere in this notebook! Again, you don't way your keys stolen!
+While you may wish to print out these API keys to check that they imported properly, be sure to clear the output once you do so. Again, you don't want your keys stolen!
 
 ## An Example Request with OAuth <a id="oauth_request"></a>
 https://www.yelp.com/developers/documentation/v3/get_started
