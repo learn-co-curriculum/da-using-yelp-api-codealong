@@ -73,7 +73,7 @@ def get_keys(path):
 
 
 ```python
-keys = get_keys("../.secret/yelp_api.json")
+keys = get_keys("../secret/yelp_api.json")
 
 api_key = keys['api_key']
 ```
