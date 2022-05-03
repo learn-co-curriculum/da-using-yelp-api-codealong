@@ -36,9 +36,11 @@ To this end, how can we easily access our API key without opening ourselves up t
 
 There are many ways to store sensitive information but we will go with this method. 
 
+The steps below will help you create a new folder in your IllumiDesk directory where you can store files related to your API credentials, and share those credentials across multiple labs.
+
 #### Create a `secret/` directory
 
-Click on the Illumidesk logo in the top left corner while holding the `cmd` key (`ctrl` for Windows) to open the window in a new tab. This is the root of your Illumidesk directory. In this new window, click `New` in the top right corner followed by `Folder`. Find the folder titled `Untitled Folder`, select the checkbox directly to the left of it, scroll back to the top of the page and click `Rename`. Rename the folder to `secret`.
+Click on the IllumiDesk logo in the top left corner while holding the `cmd` key (`ctrl` for Windows) to open the window in a new tab. This is the root of your IllumiDesk directory. In this new window, click `New` in the top right corner followed by `Folder`. Find the folder titled `Untitled Folder`, select the checkbox directly to the left of it, scroll back to the top of the page and click `Rename`. Rename the folder to `secret`.
 
 #### Create `.json` file
 
